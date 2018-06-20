@@ -1,0 +1,13 @@
+Primero cometimos el error de realizar un left join de las vistas_postulaciones tanto con la info de los postulantes
+como con los detalles de los avisos. Al hacer esto, quedaban una gran cantidad de registros con features NaN y no nos dimos cuenta.
+Luego, a pesar de que transformabamos los valores null en cero, consideramos que esto empeoraba notablemente el rendimiento de los algoritmos de ML.
+
+A su vez, comenzamos asignando un orden jerárquico a cada combinación de título y estado, teniendo un total de 19 variables categóricas.
+Esto no lograba generalizar bien y nos empeoraba el rendimiento de los algoritmos de ML.
+Decidimos generar una única variable categórica por título y, por otro lado, una columna binaria que indica si está estudiando o no.
+
+Lo mismo nos ocurrió con la edad. Finalmente, decidimos transformarla a 4 rangos de edad para generalizar mejor.
+
+Lo mismo nos ocurrió con el nombre_zona. Teníamos aprox. 15 valores y decidimos pasarlo a 3: GBA, Capital Federal y Otros.
+
+A su vez, comenzamos a probar los algoritmos de ML con features bastante básicos que no relacionaban la info de los postulantes con los detalles de los avisos.
